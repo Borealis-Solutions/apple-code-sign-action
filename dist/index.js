@@ -27704,8 +27704,6 @@ async function run() {
       }
       if (p12File) {
         args.push('--p12-file', p12File)
-      }
-      if (p12Password) {
         args.push('--p12-password', p12Password)
       }
       for (const path of certificateDerFiles) {
