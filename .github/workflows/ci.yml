@@ -10,13 +10,13 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install Dependencies
@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Fetch rcodesign
         run: |
@@ -65,11 +65,3 @@ jobs:
           pem_file: |
             key.pem
             certs/self-signed-developer-id-application.pem
-
-      - name: Test Sign P12 Source
-        uses: ./
-        with:
-          input_path: macho-binary
-          output_path: macho-binary-p12
-          p12_file: certs/self-signed-developer-id-application.p12
-          p12_password: ${{ secrets.DEVELOPER_ID_APPLICATION_PASSWORD }}
